@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 const skills = {
   Frontend: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React.js', 'Tailwind CSS', 'Framer Motion'],
   Backend: ['Node.js', 'Express.js', 'REST APIs'],
-  Database: ['MongoDB', 'Mongoose'],
-  Tools: ['Git', 'GitHub', 'Postman', 'Vercel', 'Cloudinary']
+  Database: ['MongoDB'],
+  Tools: ['Git', 'GitHub', 'Postman', 'Vercel', 'Cloudinary', "Render"]
 };
 
 const Skills = () => {

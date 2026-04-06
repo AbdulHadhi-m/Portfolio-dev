@@ -6,7 +6,7 @@ const projects = [
   {
     title: "Rentora",
     description: "MERN rental property platform with JWT auth, wishlist, robust booking flow, and an extensive admin dashboard.",
-    tech: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
+    tech: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Redux"],
     demoLink: "https://mern-stack-frontend-mu.vercel.app/",
     githubLink: "https://github.com/AbdulHadhi-m/mern-stack-project",
     image: "rentorapic.png"
@@ -14,7 +14,7 @@ const projects = [
   {
     title: "GoPath",
     description: "Complete bus booking platform featuring seat selection, secure payment integration, and roles for operator/admin/user.",
-    tech: ["React", "Express", "MongoDB", "Redux"],
+    tech: ["React", "Express", "MongoDB", "Redux", "Tailwind CSS", "Node.js"],
     demoLink: "#",
     githubLink: "https://github.com/AbdulHadhi-m/go",
     image: "gopathpic.png"
