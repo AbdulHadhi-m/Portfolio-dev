@@ -7,7 +7,7 @@ const About = () => {
     { icon: <Layout className="text-fuchsia-500" size={24} />, title: "Web Development", desc: "Building beautiful, responsive, and performance-optimized frontend architectures." },
     { icon: <Server className="text-primary" size={24} />, title: "REST API", desc: "Designing robust, secure, and scalable RESTful APIs on Node and Express." },
     { icon: <Smartphone className="text-fuchsia-500" size={24} />, title: "Responsive UI", desc: "Ensuring pixel-perfect layouts across mobile, tablet, and desktop devices." },
-    { icon: <Lock className="text-primary" size={24} />, title: "Authentication", desc: "Implementing secure JWT auth flows and role-based access control." }
+    { icon: <Lock className="text-primary" size={24} />, title: "Authentication", desc: "JWT auth, Google OAuth, protected APIs, and role-based access control." }
   ];
 
   return (
@@ -24,10 +24,11 @@ const About = () => {
         
         <div className="glass-card p-6 md:p-8 mb-10">
           <p className="text-muted leading-relaxed mb-4 text-lg">
-            My journey as a developer started with a curiosity for how things work on the web. Fast forward to today, I'm a full-stack MERN developer with a profound passion for creating flawless user experiences. 
+            My journey as a developer started with curiosity about how the web works. Today, I’m a Full-Stack MERN Developer passionate about building scalable applications with seamless user experiences.
+ 
           </p>
           <p className="text-muted leading-relaxed text-lg">
-            I specialize in React and Tailwind on the frontend, and Node.js with MongoDB on the backend. When I'm not writing code, I'm exploring modern design aesthetics, optimizing performance, and learning new patterns.
+            I specialize in React and Tailwind CSS for modern frontend development, combined with Node.js, Express, and MongoDB for robust backend systems. I enjoy creating clean UI, optimizing performance, and constantly learning new technologies and design patterns.
           </p>
         </div>
 
