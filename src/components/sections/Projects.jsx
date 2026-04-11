@@ -6,7 +6,7 @@ const projects = [
   {
     title: "Rentora",
     description: "MERN rental property platform with JWT auth, wishlist, robust booking flow, and an extensive admin dashboard.",
-    tech: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Redux"],
+    tech: ["React", "Tailwind CSS", "Node.js","Cloudinary" ,"Express", "MongoDB", "Redux" ],
     demoLink: "https://mern-stack-frontend-mu.vercel.app/",
     githubLink: "https://github.com/AbdulHadhi-m/mern-stack-project",
     image: "rentorapic.png"
@@ -19,14 +19,37 @@ const projects = [
     githubLink: "https://github.com/AbdulHadhi-m/go",
     image: "gopathpic.png"
   },
-  // {
-  //   title: "Premium Portfolio",
-  //   description: "My personal portfolio website with a premium dark UI, smooth interactions, and a clean codebase.",
-  //   tech: ["React", "Vite", "Tailwind", "Framer Motion"],
-  //   demoLink: "#",
-  //   githubLink: "#",
-  //   image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-  // }
+  {
+  title: "Personal Portfolio",
+  description:
+    "Modern responsive developer portfolio built to showcase my MERN stack projects, skills, services, and contact information with premium UI animations and smooth user experience.",
+  tech: [
+    "React",
+    "Vite",
+    "Tailwind CSS",
+    "Framer Motion",
+    "JavaScript"
+  ],
+  demoLink: "https://portfolio-dev-two-weld.vercel.app/",
+  githubLink: "https://github.com/AbdulHadhi-m/Portfolio-dev",
+  image: "port2.png"
+},{
+  title: "Quizivo",
+  description:
+    "AI-powered MERN quiz platform featuring timed challenges, dynamic question generation with Gemini API, real-time leaderboard rankings, secure JWT authentication, and category-based quiz experiences.",
+  tech: [
+    "React",
+    "Node.js",
+    "Express",
+    "MongoDB Atlas",
+    "Redux Toolkit",
+    "Tailwind CSS",
+    "Gemini API"
+  ],
+  demoLink: "https://quizivo-client.vercel.app/",
+  githubLink: "https://github.com/AbdulHadhi-m/Quizivo",
+  image: "quiz1.png"
+}
 ];
 
 const Projects = () => {

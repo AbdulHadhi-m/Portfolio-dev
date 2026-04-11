@@ -32,7 +32,7 @@ const Hero = () => {
             href="#contact" 
             className="px-6 py-3.5 rounded-full glass-card hover:bg-white/10 text-white font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
           >
-            Contact Me
+            Download Resume
           </a>
         </div>
 
