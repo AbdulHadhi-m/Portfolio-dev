@@ -28,12 +28,13 @@ const Hero = () => {
           >
             View My Work <ArrowRight size={18} />
           </a>
-          <a 
-            href="#contact" 
-            className="px-6 py-3.5 rounded-full glass-card hover:bg-white/10 text-white font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
-          >
-            Download Resume
-          </a>
+          <a
+  href="/resume.pdf"
+  download
+  className="px-6 py-3.5 rounded-full glass-card hover:bg-white/10 text-white font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
+>
+  Download Resume
+</a>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 border-y border-white/5 py-8">
