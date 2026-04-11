@@ -1,5 +1,7 @@
 import React from 'react';
 import { Code, Briefcase, Mail, Image, MapPin, Download } from 'lucide-react';
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin,FaInstagram  } from "react-icons/fa6";
 import { motion } from 'framer-motion';
 
 const Sidebar = () => {
@@ -34,10 +36,10 @@ const Sidebar = () => {
 
       <div className="flex gap-4 mb-8">
         {[
-          { icon: <Code size={20} />, href: "https://github.com/AbdulHadhi-m" },
-          { icon: <Briefcase size={20} />, href: "https://www.linkedin.com/in/abdul-hadhi-m/" },
+          { icon: <FaGithub size={20} />, href: "https://github.com/AbdulHadhi-m" },
+          { icon: <FaLinkedin size={20} />, href: "https://www.linkedin.com/in/abdul-hadhi-m/" },
           { icon: <Mail size={20} />, href: "https://mail.google.com/mail/?view=cm&fs=1&to=abdulhadhi.work@gmail.com" },
-          { icon: <Image size={20} />, href: "https://www.instagram.com/_hadhi__7?igsh=a3huMDV6aHZ2a3l2" },
+          { icon: <FaInstagram   size={20} />, href: "https://www.instagram.com/_hadhi__7?igsh=a3huMDV6aHZ2a3l2" },
         ].map((social, i) => (
           <a
             key={i}
