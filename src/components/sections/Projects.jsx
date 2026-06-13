@@ -49,6 +49,20 @@ const projects = [
   demoLink: "https://quizivo-client.vercel.app/",
   githubLink: "https://github.com/AbdulHadhi-m/Quizivo",
   image: "quiz1.png"
+},
+{
+  title: "WhoPay.me",
+  description:
+    "WhoPay.me is a fun web application that randomly selects who pays the bill using a virtual spin wheel or dice roll. Built with React.js, TypeScript, Node.js, and MongoDB, the project helped me gain experience in full-stack development while creating an engaging and interactive user experience.",
+  tech: [
+    "React.js",
+    "TypeScript",
+    "Node.js",
+    "MongoDB"
+  ],
+  demoLink: "https://www.whopay.me/",
+  githubLink: "https://github.com/AbdulHadhi-m/whopays",
+  image: "whopay1.png"
 }
 ];
 
