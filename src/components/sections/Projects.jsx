@@ -1,147 +1,159 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useIsTouchDevice } from '../../hooks/useIsTouchDevice';
 import { ExternalLink, Code } from 'lucide-react';
 
 const projects = [
-  // {
-  //   title: "Rentora",
-  //   description: "MERN rental property platform with JWT auth, wishlist, robust booking flow, and an extensive admin dashboard.",
-  //   tech: ["React", "Tailwind CSS", "Node.js","Cloudinary" ,"Express", "MongoDB", "Redux" ],
-  //   demoLink: "https://mern-stack-frontend-mu.vercel.app/",
-  //   githubLink: "https://github.com/AbdulHadhi-m/mern-stack-project",
-  //   image: "rentorapic.png"
-  // },
   {
-    title: "GoPath",
+    title: "GoPath", color: "bg-cyan", image: "gopathpic.png",
     description: "Complete bus booking platform featuring seat selection, secure payment integration, and roles for operator/admin/user.",
     tech: ["React", "Express", "MongoDB", "Redux", "Tailwind CSS", "Node.js"],
-    demoLink: "#",
-    githubLink: "https://github.com/AbdulHadhi-m/go",
-    image: "gopathpic.png"
+    demoLink: "#", githubLink: "https://github.com/AbdulHadhi-m/go",
   },
   {
-  title: "Personal Portfolio",
-  description:
-    "Modern responsive developer portfolio built to showcase my MERN stack projects, skills, services, and contact information with premium UI animations and smooth user experience.",
-  tech: [
-    "React",
-    "Vite",
-    "Tailwind CSS",
-    "Framer Motion",
-    "JavaScript"
-  ],
-  demoLink: "https://portfolio-dev-two-weld.vercel.app/",
-  githubLink: "https://github.com/AbdulHadhi-m/Portfolio-dev",
-  image: "port2.png"
-},{
-  title: "Quizivo",
-  description:
-    "AI-powered MERN quiz platform featuring timed challenges, dynamic question generation with Gemini API, real-time leaderboard rankings, secure JWT authentication, and category-based quiz experiences.",
-  tech: [
-    "React",
-    "Node.js",
-    "Express",
-    "MongoDB Atlas",
-    "Redux Toolkit",
-    "Tailwind CSS",
-    "Gemini API"
-  ],
-  demoLink: "https://quizivo-client.vercel.app/",
-  githubLink: "https://github.com/AbdulHadhi-m/Quizivo",
-  image: "quiz1.png"
-},
-{
-  title: "WhoPay.me",
-  description:
-    "WhoPay.me is a fun web application that randomly selects who pays the bill using a virtual spin wheel or dice roll. Built with React.js, TypeScript, Node.js, and MongoDB, the project helped me gain experience in full-stack development while creating an engaging and interactive user experience.",
-  tech: [
-    "React.js",
-    "TypeScript",
-    "Node.js",
-    "MongoDB"
-  ],
-  demoLink: "https://www.whopay.me/",
-  githubLink: "https://github.com/AbdulHadhi-m/whopays",
-  image: "whopay1.png"
-}
+    title: "Personal Portfolio", color: "bg-pink", image: "port2.png",
+    description: "Modern responsive developer portfolio built to showcase MERN stack projects, skills, services, and contact information.",
+    tech: ["React", "Vite", "Tailwind CSS", "Framer Motion", "JavaScript"],
+    demoLink: "https://portfolio-dev-two-weld.vercel.app/",
+    githubLink: "https://github.com/AbdulHadhi-m/Portfolio-dev",
+  },
+  {
+    title: "Quizivo", color: "bg-yellow", image: "quiz1.png",
+    description: "AI-powered MERN quiz platform featuring timed challenges, dynamic question generation with Gemini API, real-time leaderboard.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Redux Toolkit", "Tailwind CSS", "Gemini API"],
+    demoLink: "https://quizivo-client.vercel.app/",
+    githubLink: "https://github.com/AbdulHadhi-m/Quizivo",
+  },
+  {
+    title: "WhoPay.me", color: "bg-green", image: "whopay1.png",
+    description: "Fun web app that randomly selects who pays the bill using a virtual spin wheel or dice roll.",
+    tech: ["React.js", "TypeScript", "Node.js", "MongoDB"],
+    demoLink: "https://www.whopay.me/",
+    githubLink: "https://github.com/AbdulHadhi-m/whopays",
+  },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+const projectVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 const Projects = () => {
+  const isTouch = useIsTouchDevice();
+  const hoverCard = isTouch ? {} : { x: 4, y: 4, boxShadow: '0 0 0 #1a1a1a' };
+  const hoverTag = isTouch ? {} : { x: 2, y: 2, boxShadow: '0 0 0 #1a1a1a', backgroundColor: '#ffd93d' };
+  const hoverBtn = isTouch ? {} : { x: 4, y: 4, boxShadow: '0 0 0 #1a1a1a' };
   return (
-    <section id="projects" className="scroll-mt-24">
+    <section id="projects">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-3xl md:text-4xl font-outfit font-bold mb-8 flex items-center gap-4">
-          Featured <span className="text-gradient">Projects</span>
-        </h2>
+        <motion.span
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="inline-block bg-yellow border-3 border-ink px-4 py-1 font-bold font-mono text-sm tracking-wider mb-6"
+          style={{ boxShadow: '3px 3px 0 #1a1a1a' }}
+        >
+          PROJECTS
+        </motion.span>
 
-        <div className="flex flex-col gap-8 md:gap-12">
+        <motion.h2
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl md:text-5xl font-bold font-sans mb-8"
+        >
+          Things I've <span className="bg-green border-3 border-ink px-2">Built</span>
+        </motion.h2>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="flex flex-col gap-8"
+        >
           {projects.map((project, i) => (
-            <motion.div 
+            <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="glass-card overflow-hidden group flex flex-col xl:flex-row"
+              variants={projectVariants}
+              className="bg-surface border-3 border-ink overflow-hidden flex flex-col xl:flex-row"
+              style={{ boxShadow: '6px 6px 0 #1a1a1a' }}
+              whileHover={hoverCard}
             >
-              {/* Project Image */}
-              <div className="xl:w-2/5 aspect-video xl:aspect-auto overflow-hidden relative border-b xl:border-b-0 xl:border-r border-white/10">
-                <div className="absolute inset-0 bg-primary/20 mix-blend-overlay group-hover:opacity-0 transition-opacity z-10 duration-500"></div>
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+              <div className="xl:w-2/5 aspect-video xl:aspect-auto overflow-hidden border-b xl:border-b-0 xl:border-r-3 border-ink bg-surface">
+                <motion.img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                  whileHover={isTouch ? {} : { scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
                 />
               </div>
 
-              {/* Project Info */}
               <div className="p-6 md:p-8 xl:w-3/5 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold font-outfit mb-3 text-white group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                
-                <p className="text-muted leading-relaxed mb-6">
-                  {project.description}
-                </p>
+                <div className="flex items-center gap-3 mb-3">
+                  <motion.div
+                    className={`w-4 h-4 ${project.color} border-2 border-ink`}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  />
+                  <h3 className="text-2xl font-bold font-sans">{project.title}</h3>
+                </div>
+
+                <p className="text-ink-light leading-relaxed mb-6">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tech.map((tech) => (
-                    <span 
-                      key={tech} 
-                      className="text-xs font-medium px-3 py-1 rounded-full bg-surface border border-white/5 text-muted"
+                    <motion.span
+                      key={tech}
+                      className="bg-surface border-2 border-ink px-3 py-1 text-xs font-semibold"
+                      style={{ boxShadow: '2px 2px 0 #1a1a1a' }}
+                      whileHover={hoverTag}
+                      whileTap={{ x: 2, y: 2, boxShadow: '0 0 0 #1a1a1a', backgroundColor: '#ffd93d' }}
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
 
                 <div className="flex items-center gap-4 mt-auto">
-                  <a 
+                  <motion.a
                     href={project.demoLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all font-medium border border-primary/20 hover:border-primary"
+                    className="px-5 py-2.5 bg-cyan border-3 border-ink font-bold font-sans text-sm flex items-center gap-2"
+                    style={{ boxShadow: '4px 4px 0 #1a1a1a' }}
+                    whileHover={hoverBtn}
+                    whileTap={{ x: 5, y: 5, boxShadow: 'none' }}
                   >
                     <ExternalLink size={16} /> Live Demo
-                  </a>
-                  <a 
+                  </motion.a>
+                  <motion.a
                     href={project.githubLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full glass-card hover:bg-white/10 transition-all font-medium text-white"
+                    className="px-5 py-2.5 bg-surface border-3 border-ink font-bold font-sans text-sm flex items-center gap-2"
+                    style={{ boxShadow: '4px 4px 0 #1a1a1a' }}
+                    whileHover={hoverBtn}
+                    whileTap={{ x: 5, y: 5, boxShadow: 'none' }}
                   >
                     <Code size={16} /> Source Code
-                  </a>
+                  </motion.a>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

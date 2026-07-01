@@ -1,50 +1,141 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useIsTouchDevice } from '../../hooks/useIsTouchDevice';
+import { FaReact, FaNodeJs, FaGitAlt, FaGithub, FaHtml5, FaCss3, FaJs } from 'react-icons/fa';
+import { SiExpress, SiMongodb, SiTailwindcss, SiPostman, SiFramer, SiVercel, SiCloudinary, SiRedux } from 'react-icons/si';
+import { Lock, Database, Wrench } from 'lucide-react';
 
-const skills = {
-  Frontend: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React.js', 'Tailwind CSS', 'Framer Motion'],
-  Backend: ['Node.js', 'Express.js', 'REST APIs'],
-  Database: ['MongoDB'],
-  Tools: ['Git', 'GitHub', 'Postman', 'Vercel', 'Cloudinary', "Render"]
+const skillGroups = [
+  {
+    icon: <FaReact size={28} />, title: 'Frontend',
+    items: [
+      { icon: <FaReact />, label: 'React.js' }, { icon: <FaHtml5 />, label: 'HTML5' },
+      { icon: <FaCss3 />, label: 'CSS3' }, { icon: <FaJs />, label: 'JavaScript' },
+      { icon: <SiTailwindcss />, label: 'Tailwind CSS' }, { icon: <SiFramer />, label: 'Framer Motion' },
+      { icon: <SiRedux />, label: 'Redux' },
+    ],
+  },
+  {
+    icon: <FaNodeJs size={28} />, title: 'Backend',
+    items: [
+      { icon: <FaNodeJs />, label: 'Node.js' }, { icon: <SiExpress />, label: 'Express.js' },
+      { label: 'REST APIs' }, { icon: <Lock size={14} />, label: 'JWT Auth' },
+    ],
+  },
+  {
+    icon: <SiMongodb size={28} />, title: 'Database',
+    items: [
+      { icon: <SiMongodb />, label: 'MongoDB' }, { icon: <Database size={14} />, label: 'Mongoose' },
+    ],
+  },
+  {
+    icon: <Wrench size={28} />, title: 'Tools',
+    items: [
+      { icon: <FaGitAlt />, label: 'Git' }, { icon: <FaGithub />, label: 'GitHub' },
+      { icon: <SiPostman />, label: 'Postman' }, { icon: <SiVercel />, label: 'Vercel' },
+      { icon: <SiCloudinary />, label: 'Cloudinary' }, { label: 'Render' },
+    ],
+  },
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+const groupVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+const tagVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: (i) => ({ opacity: 1, scale: 1, transition: { delay: i * 0.04, type: "spring", stiffness: 200, damping: 15 } }),
 };
 
 const Skills = () => {
+  const isTouch = useIsTouchDevice();
+
+  const hoverPush = isTouch ? {} : { x: 3, y: 3, boxShadow: '0 0 0 #1a1a1a' };
+  const hoverTag = isTouch ? {} : { x: 2, y: 2, boxShadow: '0 0 0 #1a1a1a', backgroundColor: '#ffd93d' };
+  const tapPush = { x: 3, y: 3, boxShadow: '0 0 0 #1a1a1a' };
+  const tapTag = { x: 2, y: 2, boxShadow: '0 0 0 #1a1a1a', backgroundColor: '#ffd93d' };
+
   return (
-    <section id="skills" className="scroll-mt-24">
+    <section id="skills">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-3xl md:text-4xl font-outfit font-bold mb-8 flex items-center gap-4">
-          Tech <span className="text-gradient">Arsenal</span>
-        </h2>
+        <motion.span
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="inline-block bg-yellow border-3 border-ink px-4 py-1 font-bold font-mono text-sm tracking-wider mb-6"
+          style={{ boxShadow: '3px 3px 0 #1a1a1a' }}
+        >
+          SKILLS
+        </motion.span>
 
-        <div className="flex flex-col gap-6">
-          {Object.entries(skills).map(([category, items], i) => (
-            <motion.div 
-              key={category}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card p-6 md:p-8"
+        <motion.h2
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl md:text-5xl font-bold font-sans mb-8"
+        >
+          My <span className="bg-cyan border-3 border-ink px-2">Tech Stack</span>
+        </motion.h2>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          {skillGroups.map((group) => (
+            <motion.div
+              key={group.title}
+              variants={groupVariants}
+              className="bg-surface border-3 border-ink p-6"
+              style={{ boxShadow: '5px 5px 0 #1a1a1a' }}
+              whileHover={hoverPush}
+              whileTap={tapPush}
             >
-              <h3 className="text-xl font-bold font-outfit mb-4 text-white/90">{category}</h3>
-              <div className="flex flex-wrap gap-3">
-                {items.map((skill) => (
-                  <span 
-                    key={skill}
-                    className="px-4 py-2 rounded-lg bg-surface border border-white/5 text-muted hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all cursor-default"
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div
+                  className="w-10 h-10 bg-yellow border-2 border-ink flex items-center justify-center"
+                  whileHover={isTouch ? {} : { rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {group.icon}
+                </motion.div>
+                <h3 className="text-xl font-bold font-sans">{group.title}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((skill, si) => (
+                  <motion.span
+                    key={skill.label}
+                    custom={si}
+                    variants={tagVariants}
+                    className="bg-surface border-2 border-ink px-3 py-1 text-sm font-semibold inline-flex items-center gap-1.5"
+                    style={{ boxShadow: '2px 2px 0 #1a1a1a' }}
+                    whileHover={hoverTag}
+                    whileTap={tapTag}
                   >
-                    {skill}
-                  </span>
+                    {skill.icon && (
+                      <motion.span className="text-sm" whileHover={isTouch ? {} : { rotate: 360 }} transition={{ duration: 0.5 }}>
+                        {skill.icon}
+                      </motion.span>
+                    )}
+                    {skill.label}
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

@@ -1,220 +1,144 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Send, Mail, MapPin } from "lucide-react";
-import { toast, Toaster } from "react-hot-toast";
-import emailjs from "@emailjs/browser";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useIsTouchDevice } from '../../hooks/useIsTouchDevice';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { Mail, MapPin, Send } from 'lucide-react';
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.5, ease: "easeOut" } }),
+};
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      await emailjs.send(
-        "service_bxpu5w8",
-        "template_wl119k6",
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_email: "abdulhadhi.work@gmail.com",
-        },
-        "hpcZWajuV-JKm5ric"
-      );
-
-      toast.success("Message sent successfully! I'll get back to you soon.", {
-        style: {
-          background: "#111",
-          color: "#fff",
-          border: "1px solid rgba(255,255,255,0.1)",
-        },
-      });
-
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-    } catch (error) {
-      console.error("Email send error:", error);
-
-      toast.error("Failed to send message. Please try again.", {
-        style: {
-          background: "#111",
-          color: "#fff",
-          border: "1px solid rgba(255,255,255,0.1)",
-        },
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  const isTouch = useIsTouchDevice();
+  const hoverSocial = isTouch ? {} : { x: 4, y: 4, boxShadow: '0 0 0 #1a1a1a' };
+  const hoverBtn = isTouch ? {} : { x: 4, y: 4, boxShadow: '0 0 0 #1a1a1a' };
+  const hoverRow = isTouch ? {} : { x: 3 };
   return (
-    <section id="contact" className="scroll-mt-24">
-      <Toaster position="bottom-right" />
-
+    <section id="contact">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="mb-8 flex items-center gap-4 text-3xl font-bold md:text-4xl">
-          Let's <span className="text-gradient">Talk</span>
-        </h2>
+        <motion.span
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="inline-block bg-yellow border-3 border-ink px-4 py-1 font-bold font-mono text-sm tracking-wider mb-6"
+          style={{ boxShadow: '3px 3px 0 #1a1a1a' }}
+        >
+          CONTACT
+        </motion.span>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {/* Contact Info Card */}
-          <div className="glass-card flex h-fit flex-col gap-8 p-8 lg:col-span-1">
-            <h3 className="mb-2 text-xl font-bold text-white">Get in touch</h3>
-            <p className="text-sm leading-relaxed text-muted">
-              I'm always open to discussing new projects, creative ideas, or
-              opportunities to be part of your vision.
-            </p>
+        <motion.h2
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl md:text-5xl font-bold font-sans mb-4"
+        >
+          Get In <span className="bg-pink border-3 border-ink px-2">Touch</span>
+        </motion.h2>
 
-            <div className="mt-4 flex flex-col gap-6">
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Mail size={20} />
-                </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-xl md:text-2xl font-hand text-ink-light mb-8"
+        >
+          Let's build something amazing together ✨
+        </motion.p>
 
-                <div className="min-w-0">
-                  <p className="text-sm text-muted">Email</p>
-                  <p className="break-all text-sm font-medium text-white md:text-base">
-                    abdulhadhi.work@gmail.com
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <MapPin size={20} />
-                </div>
-
-                <div>
-                  <p className="text-sm text-muted">Location</p>
-                  <p className="font-medium text-white">Kerala, India</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="glass-card p-8 md:p-10 lg:col-span-2">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="name"
-                    className="text-sm font-medium text-muted"
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-xl border border-white/10 bg-surface px-4 py-3 text-white transition-all placeholder:text-white/20 focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/50"
-                    placeholder="John Doe"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="email"
-                    className="text-sm font-medium text-muted"
-                  >
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-xl border border-white/10 bg-surface px-4 py-3 text-white transition-all placeholder:text-white/20 focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/50"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="subject"
-                  className="text-sm font-medium text-muted"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-xl border border-white/10 bg-surface px-4 py-3 text-white transition-all placeholder:text-white/20 focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/50"
-                  placeholder="Project Inquiry"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="message"
-                  className="text-sm font-medium text-muted"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full resize-none rounded-xl border border-white/10 bg-surface px-4 py-3 text-white transition-all placeholder:text-white/20 focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/50"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3.5 font-semibold text-white transition-all hover:scale-[1.02] hover:bg-primary-hover active:scale-95 disabled:opacity-70 disabled:hover:scale-100 md:w-auto"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          {[
+            { icon: <FaLinkedin size={40} />, label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdul-hadhi-m/', bg: 'hover:bg-cyan/20' },
+            { icon: <FaGithub size={40} />, label: 'GitHub', href: 'https://github.com/AbdulHadhi-m', bg: 'hover:bg-yellow/20' },
+            { icon: <FaInstagram size={40} />, label: 'Instagram', href: 'https://www.instagram.com/_hadhi__7?igsh=a3huMDV6aHZ2a3l2', bg: 'hover:bg-pink/20' },
+          ].map((social, i) => (
+            <motion.a
+              key={i}
+              href={social.href}
+              target="_blank"
+              rel="noreferrer"
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-30px" }}
+              className="bg-surface border-3 border-ink p-8 flex flex-col items-center justify-center gap-4 group"
+              style={{ boxShadow: '5px 5px 0 #1a1a1a' }}
+              whileHover={hoverSocial}
+              whileTap={{ x: 3, y: 3, boxShadow: '0 0 0 #1a1a1a' }}
+            >
+              <motion.div
+                whileHover={isTouch ? {} : { scale: 1.2, rotate: [0, -10, 10, -10, 0] }}
+                transition={{ duration: 0.5 }}
               >
-                {loading ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    Send Message <Send size={18} />
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
+                {social.icon}
+              </motion.div>
+              <span className="font-bold font-sans text-lg">{social.label}</span>
+            </motion.a>
+          ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="bg-surface border-3 border-ink p-6 md:p-8"
+          style={{ boxShadow: '6px 6px 0 #1a1a1a' }}
+        >
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
+            <motion.div className="flex items-center gap-4" whileHover={hoverRow}>
+              <motion.div
+                className="w-12 h-12 bg-yellow border-2 border-ink flex items-center justify-center"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <Mail size={20} />
+              </motion.div>
+              <div>
+                <p className="text-sm font-mono font-bold text-ink-light">Email</p>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=abdulhadhi.work@gmail.com" target="_blank" rel="noreferrer" className="font-semibold underline underline-offset-2">
+                  abdulhadhi.work@gmail.com
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div className="flex items-center gap-4" whileHover={hoverRow}>
+              <motion.div
+                className="w-12 h-12 bg-green border-2 border-ink flex items-center justify-center"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              >
+                <MapPin size={20} />
+              </motion.div>
+              <div>
+                <p className="text-sm font-mono font-bold text-ink-light">Location</p>
+                <p className="font-semibold">Kerala, India</p>
+              </div>
+            </motion.div>
+
+            <motion.a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=abdulhadhi.work@gmail.com"
+              target="_blank"
+              rel="noreferrer"
+              className="px-6 py-3 bg-yellow border-3 border-ink font-bold font-sans flex items-center gap-2 mt-4 md:mt-0 md:ml-auto"
+              style={{ boxShadow: '4px 4px 0 #1a1a1a' }}
+              whileHover={hoverBtn}
+              whileTap={{ x: 5, y: 5, boxShadow: 'none' }}
+            >
+              <motion.span animate={{ x: [0, 3, 0] }} transition={{ duration: 1.2, repeat: Infinity }}>
+                <Send size={16} />
+              </motion.span>
+              Send Email
+            </motion.a>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
