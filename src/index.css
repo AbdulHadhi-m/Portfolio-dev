@@ -2,39 +2,143 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  transition: background-color 0.35s ease;
+}
+
+:root {
+  --color-bg: #faf9f5;
+  --color-surface: #ffffff;
+  --color-ink: #1a1a1a;
+  --color-ink-light: #555555;
+  --color-border: #1a1a1a;
+  --color-scrollbar-bg: #faf9f5;
+}
+
+.dark {
+  --color-bg: #121212;
+  --color-surface: #1e1e1e;
+  --color-ink: #f0f0f0;
+  --color-ink-light: #a3a3a3;
+  --color-border: #f0f0f0;
+  --color-scrollbar-bg: #121212;
+}
+
+.dark .page-wrapper {
+  background-color: #1a1a1a;
+  background-image:
+    radial-gradient(ellipse at top left, rgba(26,26,26,0.9) 0%, transparent 35%),
+    radial-gradient(ellipse at top right, rgba(26,26,26,0.9) 0%, transparent 35%),
+    radial-gradient(ellipse at bottom left, rgba(26,26,26,0.9) 0%, transparent 35%),
+    radial-gradient(ellipse at bottom right, rgba(26,26,26,0.9) 0%, transparent 35%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 20px);
+}
+
+.dark .progress-bar-container {
+  background: #2a2a2a;
+}
+
+.dark .paper-tear svg path[fill="#d0d0d0"] { fill: #0a0a0a; }
+.dark .paper-tear svg path[fill="#ffffff"] { fill: #1a1a1a; }
+.dark .page-gap { background: #0a0a0a; }
+
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
   body {
-    @apply bg-background text-white font-sans antialiased overflow-x-hidden relative;
+    @apply bg-bg text-ink font-sans antialiased;
+    background-image:
+      linear-gradient(45deg, var(--color-ink) 1px, transparent 1px),
+      linear-gradient(-45deg, var(--color-ink) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    background-color: var(--color-bg);
   }
 }
 
-.glass-card {
-  @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl rounded-2xl;
+/* Page Wrapper */
+.page-wrapper {
+  background: var(--color-surface);
+  border: 6px solid var(--color-ink);
+  box-shadow: 12px 12px 0 var(--color-ink);
+  max-width: 1340px;
+  margin: 16px auto;
+  min-height: calc(100vh - 32px);
+  overflow: visible;
+  position: relative;
+  background-image:
+    radial-gradient(ellipse at top left, rgba(255,255,255,0.9) 0%, transparent 35%),
+    radial-gradient(ellipse at top right, rgba(255,255,255,0.9) 0%, transparent 35%),
+    radial-gradient(ellipse at bottom left, rgba(255,255,255,0.9) 0%, transparent 35%),
+    radial-gradient(ellipse at bottom right, rgba(255,255,255,0.9) 0%, transparent 35%),
+    repeating-linear-gradient(90deg, #f0f0f0 0px, #f0f0f0 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(0deg, #f0f0f0 0px, #f0f0f0 1px, transparent 1px, transparent 20px);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Progress Bar */
+.progress-bar-container {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 12px;
+  background: var(--color-surface);
+  border-bottom: 4px solid var(--color-ink);
+  z-index: 10000;
 }
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #ffd93d;
+  transition: width 0.1s ease;
+  border-right: 4px solid var(--color-ink);
+}
+
+/* Brutalist Box with push effect */
+.brutal-box {
+  border: 3px solid var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
+  transition: all 0.15s ease;
+}
+.brutal-box:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--color-ink);
+}
+.brutal-box:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.brutal-card {
+  @apply bg-surface border-3 border-ink rounded-none;
+  box-shadow: 5px 5px 0px var(--color-ink);
+}
+
+.brutal-btn {
+  @apply border-3 border-ink font-bold px-6 py-3 transition-all active:translate-x-[3px] active:translate-y-[3px] active:shadow-none;
+  box-shadow: 4px 4px 0px var(--color-ink);
+}
+
+.brutal-tag {
+  @apply border-2 border-ink px-3 py-1 text-ink text-sm font-semibold rounded-none inline-flex items-center gap-1.5;
+  background: var(--color-surface);
+}
+
+.brutal-section-title {
+  @apply font-mono text-sm font-bold tracking-widest text-ink-light mb-6;
+}
+
+.highlight-yellow { @apply bg-yellow text-ink px-1 font-semibold; }
+.highlight-cyan { @apply bg-cyan text-ink px-1 font-semibold; }
+.highlight-green { @apply bg-green text-ink px-1 font-semibold; }
+.highlight-pink { @apply bg-pink text-ink px-1 font-semibold; }
+
+::-webkit-scrollbar { width: 12px; }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--color-scrollbar-bg);
+  border-left: 3px solid var(--color-ink);
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #ffd93d;
+  border: 3px solid var(--color-ink);
+  border-radius: 0;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-fuchsia-500;
-}
-
-/* Base Utility for glow effects */
-.glow-primary {
-  box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.4);
-}
+::-webkit-scrollbar-thumb:hover { background: #66d9ef; }
