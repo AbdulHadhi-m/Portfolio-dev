@@ -2,14 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useIsTouchDevice } from '../../hooks/useIsTouchDevice';
 import { FaReact, FaNodeJs, FaGitAlt, FaGithub, FaHtml5, FaCss3, FaJs } from 'react-icons/fa';
-import { SiExpress, SiMongodb, SiTailwindcss, SiPostman, SiFramer, SiVercel, SiCloudinary, SiRedux } from 'react-icons/si';
+import { SiExpress, SiMongodb, SiTailwindcss, SiPostman, SiFramer, SiVercel, SiCloudinary, SiRedux, SiNextdotjs } from 'react-icons/si';
 import { Lock, Database, Wrench } from 'lucide-react';
 
 const skillGroups = [
   {
     icon: <FaReact size={28} />, title: 'Frontend',
     items: [
-      { icon: <FaReact />, label: 'React.js' }, { icon: <FaHtml5 />, label: 'HTML5' },
+      { icon: <FaReact />, label: 'React.js' }, { icon: <SiNextdotjs />, label: 'Next.js' }, { icon: <FaHtml5 />, label: 'HTML5' },
       { icon: <FaCss3 />, label: 'CSS3' }, { icon: <FaJs />, label: 'JavaScript' },
       { icon: <SiTailwindcss />, label: 'Tailwind CSS' }, { icon: <SiFramer />, label: 'Framer Motion' },
       { icon: <SiRedux />, label: 'Redux' },

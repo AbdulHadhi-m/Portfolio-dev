@@ -9,7 +9,7 @@ const navItems = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Journey', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Works', href: '#projects' },
 ];
 
 const Navbar = () => {
@@ -61,7 +61,6 @@ const Navbar = () => {
         transition={{ duration: 0.4, ease: 'easeOut' }}
       >
         <div className="flex items-center justify-between px-4 py-2">
-          {/* Brand */}
           <motion.a
             href="#hero"
             onClick={(e) => handleClick(e, '#hero')}
@@ -73,7 +72,6 @@ const Navbar = () => {
             AH
           </motion.a>
 
-          {/* Desktop */}
           <div className="hidden md:flex items-center gap-5">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.slice(1);
@@ -100,7 +98,6 @@ const Navbar = () => {
               );
             })}
 
-            {/* External project link */}
             <motion.a
               href="https://github.com/AbdulHadhi-m"
               target="_blank"
@@ -114,7 +111,6 @@ const Navbar = () => {
               <ExternalLink size={12} />
             </motion.a>
 
-            {/* Theme toggle */}
             <motion.button
               onClick={toggle}
               className="px-3 py-2 bg-cyan border-3 border-ink flex items-center justify-center"
@@ -133,7 +129,6 @@ const Navbar = () => {
               </motion.span>
             </motion.button>
 
-            {/* CTA */}
             <motion.a
               href="#contact"
               onClick={(e) => handleClick(e, '#contact')}
@@ -146,7 +141,6 @@ const Navbar = () => {
             </motion.a>
           </div>
 
-          {/* Mobile */}
           <div className="md:hidden flex items-center gap-2">
             <motion.button
               onClick={toggle}
@@ -169,7 +163,6 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div

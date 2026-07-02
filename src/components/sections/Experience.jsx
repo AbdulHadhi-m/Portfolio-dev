@@ -74,7 +74,6 @@ const Experience = () => {
           className="bg-surface border-3 border-ink p-6 md:p-8 relative overflow-hidden"
           style={{ boxShadow: '6px 6px 0 #1a1a1a' }}
         >
-          {/* Timeline line */}
           <div className="absolute left-[23px] md:left-[31px] top-16 bottom-16 w-1 bg-ink/20"></div>
 
           <div className="flex flex-col gap-8 relative">
@@ -84,7 +83,6 @@ const Experience = () => {
                 variants={itemVariants}
                 className="flex gap-4 md:gap-6 group"
               >
-                {/* Timeline dot */}
                 <div className="flex flex-col items-center relative z-10">
                   <motion.div
                     className={`w-12 h-12 md:w-14 md:h-14 ${exp.color} border-3 border-ink flex items-center justify-center shrink-0`}
@@ -95,7 +93,6 @@ const Experience = () => {
                   </motion.div>
                 </div>
 
-                {/* Content */}
                 <div className="flex-1 pb-2">
                   <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 mb-1">
                     <h3 className="text-lg md:text-xl font-bold font-sans">{exp.title}</h3>
