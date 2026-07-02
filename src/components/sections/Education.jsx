@@ -6,8 +6,8 @@ import { GraduationCap, Globe, Calendar } from 'lucide-react';
 const education = [
   {
     degree: "Bachelor's in Computer Applications",
-    institution: "University of Calicut",
-    year: "2021 - 2024",
+    institution: "Indira Gandhi National Open University",
+    year: "2025 - Present",
     description: "Focused on software development, data structures, and web technologies. Built a strong foundation in programming principles and modern web development.",
     color: "bg-cyan",
   },
@@ -16,8 +16,6 @@ const education = [
 const languages = [
   { lang: 'English', level: 'Professional', bar: 'w-[90%]' },
   { lang: 'Malayalam', level: 'Native', bar: 'w-full' },
-  { lang: 'Hindi', level: 'Intermediate', bar: 'w-[65%]' },
-  { lang: 'Arabic', level: 'Basic', bar: 'w-[40%]' },
 ];
 
 const Education = () => {
@@ -51,7 +49,6 @@ const Education = () => {
         </motion.h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Education card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -88,7 +85,6 @@ const Education = () => {
             ))}
           </motion.div>
 
-          {/* Languages card */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}

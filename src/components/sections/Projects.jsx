@@ -1,35 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useIsTouchDevice } from '../../hooks/useIsTouchDevice';
-import { ExternalLink, Code } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const projects = [
   {
     title: "GoPath", color: "bg-cyan", image: "gopathpic.png",
     description: "Complete bus booking platform featuring seat selection, secure payment integration, and roles for operator/admin/user.",
     tech: ["React", "Express", "MongoDB", "Redux", "Tailwind CSS", "Node.js"],
-    demoLink: "#", githubLink: "https://github.com/AbdulHadhi-m/go",
+    demoLink: "https://go-path-ten.vercel.app/",
   },
   {
     title: "Personal Portfolio", color: "bg-pink", image: "port2.png",
     description: "Modern responsive developer portfolio built to showcase MERN stack projects, skills, services, and contact information.",
     tech: ["React", "Vite", "Tailwind CSS", "Framer Motion", "JavaScript"],
     demoLink: "https://portfolio-dev-two-weld.vercel.app/",
-    githubLink: "https://github.com/AbdulHadhi-m/Portfolio-dev",
   },
   {
     title: "Quizivo", color: "bg-yellow", image: "quiz1.png",
     description: "AI-powered MERN quiz platform featuring timed challenges, dynamic question generation with Gemini API, real-time leaderboard.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Redux Toolkit", "Tailwind CSS", "Gemini API"],
     demoLink: "https://quizivo-client.vercel.app/",
-    githubLink: "https://github.com/AbdulHadhi-m/Quizivo",
   },
   {
     title: "WhoPay.me", color: "bg-green", image: "whopay1.png",
     description: "Fun web app that randomly selects who pays the bill using a virtual spin wheel or dice roll.",
     tech: ["React.js", "TypeScript", "Node.js", "MongoDB"],
     demoLink: "https://www.whopay.me/",
-    githubLink: "https://github.com/AbdulHadhi-m/whopays",
   },
 ];
 
@@ -137,17 +134,6 @@ const Projects = () => {
                     whileTap={{ x: 5, y: 5, boxShadow: 'none' }}
                   >
                     <ExternalLink size={16} /> Live Demo
-                  </motion.a>
-                  <motion.a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-5 py-2.5 bg-surface border-3 border-ink font-bold font-sans text-sm flex items-center gap-2"
-                    style={{ boxShadow: '4px 4px 0 #1a1a1a' }}
-                    whileHover={hoverBtn}
-                    whileTap={{ x: 5, y: 5, boxShadow: 'none' }}
-                  >
-                    <Code size={16} /> Source Code
                   </motion.a>
                 </div>
               </div>
