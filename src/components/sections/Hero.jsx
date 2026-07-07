@@ -176,7 +176,7 @@ const Hero = () => {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
                 <motion.img
-                  src="/profile.png"
+                  src="/meportfolio.png"
                   alt="Abdul Hadhi M"
                   className="w-full h-full object-cover object-top"
                 whileHover={isTouch ? {} : { scale: 1.08 }}
