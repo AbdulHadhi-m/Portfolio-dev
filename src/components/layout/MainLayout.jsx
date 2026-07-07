@@ -5,7 +5,6 @@ import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
 import Navbar from './Navbar';
 import AnimatedSection from './AnimatedSection';
 import SectionDivider from './SectionDivider';
-import SketchbookSection from './SketchbookSection';
 
 const LoadingScreen = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
@@ -116,8 +115,6 @@ const MainLayout = ({ children }) => {
             {children[0]}
           </div>
 
-            <SketchbookSection />
-
           <div className="px-4 sm:px-8 md:px-12">
             <div className="py-8 md:py-12">
               <div className="flex flex-col gap-16 md:gap-24">
@@ -170,7 +167,6 @@ const MainLayout = ({ children }) => {
                     <a href="#about" className="hover:underline underline-offset-4">About</a>
                     <a href="#skills" className="hover:underline underline-offset-4">Skills</a>
                     <a href="#experience" className="hover:underline underline-offset-4">Journey</a>
-                    <a href="#contact" className="hover:underline underline-offset-4">Contact</a>
                   </div>
                   <div className="font-mono text-xs text-ink-light">
                     &copy; {new Date().getFullYear()} All rights reserved.

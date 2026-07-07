@@ -10,13 +10,7 @@ const projects = [
     tech: ["React", "Express", "MongoDB", "Redux", "Tailwind CSS", "Node.js"],
     demoLink: "https://go-path-ten.vercel.app/",
   },
-  {
-    title: "Personal Portfolio", color: "bg-pink", image: "port2.png",
-    description: "Modern responsive developer portfolio built to showcase MERN stack projects, skills, services, and contact information.",
-    tech: ["React", "Vite", "Tailwind CSS", "Framer Motion", "JavaScript"],
-    demoLink: "https://portfolio-dev-two-weld.vercel.app/",
-  },
-  {
+{
     title: "Quizivo", color: "bg-yellow", image: "quiz1.png",
     description: "AI-powered MERN quiz platform featuring timed challenges, dynamic question generation with Gemini API, real-time leaderboard.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Redux Toolkit", "Tailwind CSS", "Gemini API"],
