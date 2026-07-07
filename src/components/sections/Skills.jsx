@@ -1,39 +1,56 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useIsTouchDevice } from '../../hooks/useIsTouchDevice';
-import { FaReact, FaNodeJs, FaGitAlt, FaGithub, FaHtml5, FaCss3, FaJs } from 'react-icons/fa';
-import { SiExpress, SiMongodb, SiTailwindcss, SiPostman, SiFramer, SiVercel, SiCloudinary, SiRedux, SiNextdotjs } from 'react-icons/si';
-import { Lock, Database, Wrench } from 'lucide-react';
+import { FaReact, FaNodeJs, FaGitAlt, FaGithub, FaHtml5, FaCss3, FaJs, FaAws } from 'react-icons/fa';
+import { SiExpress, SiMongodb, SiTailwindcss, SiPostman, SiFramer, SiVercel, SiCloudinary, SiRedux, SiNextdotjs, SiFirebase, SiDocker, SiNginx, SiLinux, SiFigma, SiTrello, SiNotion, SiNpm, SiPostgresql } from 'react-icons/si';
+import { Lock, Database, Wrench, Cloud } from 'lucide-react';
+import { VscVscode } from 'react-icons/vsc';
 
 const skillGroups = [
   {
     icon: <FaReact size={28} />, title: 'Frontend',
     items: [
       { icon: <FaReact />, label: 'React.js' }, { icon: <SiNextdotjs />, label: 'Next.js' }, { icon: <FaHtml5 />, label: 'HTML5' },
-      { icon: <FaCss3 />, label: 'CSS3' }, { icon: <FaJs />, label: 'JavaScript' },
-      { icon: <SiTailwindcss />, label: 'Tailwind CSS' }, { icon: <SiFramer />, label: 'Framer Motion' },
-      { icon: <SiRedux />, label: 'Redux' },
+      { icon: <FaCss3 />, label: 'CSS' }, { icon: <SiTailwindcss />, label: 'Tailwind CSS' },
+      { icon: <SiFramer />, label: 'Framer Motion' }, { icon: <SiRedux />, label: 'Redux' }, { label: 'Bootstrap' },
+    ],
+  },
+  {
+    icon: <FaJs size={28} />, title: 'Languages',
+    items: [
+      { icon: <FaJs />, label: 'JavaScript' }, { label: 'TypeScript' },
     ],
   },
   {
     icon: <FaNodeJs size={28} />, title: 'Backend',
     items: [
       { icon: <FaNodeJs />, label: 'Node.js' }, { icon: <SiExpress />, label: 'Express.js' },
-      { label: 'REST APIs' }, { icon: <Lock size={14} />, label: 'JWT Auth' },
+      { label: 'REST APIs' }, { icon: <Lock size={14} />, label: 'JWT Auth' }, { label: 'Socket.IO' }, { label: 'OAuth' },
     ],
   },
   {
-    icon: <SiMongodb size={28} />, title: 'Database',
+    icon: <Cloud size={28} />, title: 'Cloud & DevOps',
     items: [
-      { icon: <SiMongodb />, label: 'MongoDB' }, { icon: <Database size={14} />, label: 'Mongoose' },
-    ],
-  },
-  {
-    icon: <Wrench size={28} />, title: 'Tools',
-    items: [
+      { icon: <SiVercel />, label: 'Vercel' }, { label: 'Render' },
       { icon: <FaGitAlt />, label: 'Git' }, { icon: <FaGithub />, label: 'GitHub' },
-      { icon: <SiPostman />, label: 'Postman' }, { icon: <SiVercel />, label: 'Vercel' },
-      { icon: <SiCloudinary />, label: 'Cloudinary' }, { label: 'Render' },
+      { icon: <SiDocker />, label: 'Docker' }, { icon: <FaAws />, label: 'AWS EC2' },
+      { icon: <SiNginx />, label: 'Nginx' }, { icon: <SiLinux />, label: 'Linux' },
+      { icon: <Lock size={14} />, label: 'SSL/HTTPS' },
+    ],
+  },
+  {
+    icon: <SiMongodb size={28} />, title: 'Databases',
+    items: [
+      { icon: <SiMongodb />, label: 'MongoDB' }, { icon: <Database size={14} />, label: 'Mongoose' }, { icon: <SiFirebase />, label: 'Firebase' }, { icon: <SiPostgresql />, label: 'PostgreSQL' },
+    ],
+  },
+  {
+    icon: <Wrench size={28} />, title: 'Tools & More',
+    items: [
+      { icon: <SiPostman />, label: 'Postman' }, { icon: <SiCloudinary />, label: 'Cloudinary' },
+      { icon: <VscVscode />, label: 'VS Code' }, { icon: <SiFigma />, label: 'Figma' },
+      { icon: <SiVercel />, label: 'Vercel' }, { icon: <SiTrello />, label: 'Trello' },
+      { icon: <SiNotion />, label: 'Notion' }, { icon: <SiNpm />, label: 'npm' },
     ],
   },
 ];
@@ -92,7 +109,7 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {skillGroups.map((group) => (
             <motion.div
