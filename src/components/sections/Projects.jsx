@@ -2,10 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useIsTouchDevice } from '../../hooks/useIsTouchDevice';
 import { ExternalLink } from 'lucide-react';
+import gopathImage from '../../assets/PR1.png';
 
 const projects = [
   {
-    title: "GoPath", color: "bg-cyan", image: "gopathpic.png",
+    title: "GoPath", color: "bg-cyan", image: gopathImage,
     description: "Complete bus booking platform featuring seat selection, secure payment integration, and roles for operator/admin/user.",
     tech: ["React", "Express", "MongoDB", "Redux", "Tailwind CSS", "Node.js"],
     demoLink: "https://go-path-ten.vercel.app/",
