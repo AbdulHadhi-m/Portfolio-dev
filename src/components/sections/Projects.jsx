@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useIsTouchDevice } from '../../hooks/useIsTouchDevice';
 import { ExternalLink } from 'lucide-react';
 import gopathImage from '../../assets/PR1.png';
+import quizivoImage from '../../assets/PR2.png';
 
 const projects = [
   {
@@ -12,7 +13,7 @@ const projects = [
     demoLink: "https://go-path-ten.vercel.app/",
   },
 {
-    title: "Quizivo", color: "bg-yellow", image: "quiz1.png",
+    title: "Quizivo", color: "bg-yellow", image: quizivoImage,
     description: "AI-powered MERN quiz platform featuring timed challenges, dynamic question generation with Gemini API, real-time leaderboard.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Redux Toolkit", "Tailwind CSS", "Gemini API"],
     demoLink: "https://quizivo-client.vercel.app/",
